@@ -66,16 +66,16 @@ const Home = () => {
         //to prevent variables to show in url path
         e.preventDefault();
       
-        const min=pmin;
-        const max=pmax;
-        console.log(min);
-        console.log(max);
+        const minimum=pmin;
+        const maximum=pmax;
+        console.log(minimum);
+        console.log(maximum);
        // const url = 'http://localhost:8080/products/getProductByCategory/${name}';
       /*  const result=await axios.get("http://localhost:8080/products/getProductsWithinPriceRange/"+min+"/"+max,{headers})
         setProduct(result.data);
         console.log(result.data);*/
         //navigate('/getProductByName', { pname:{name}});
-        navigate('/getProductByPriceRange',{state:{pmin:{min},pmax:{max}}});
+        navigate('/getProductByPriceRange',{state:{pmin:{minimum},pmax:{maximum}}});
     }
     return (
         <div style={{ mt: "30px" }}>

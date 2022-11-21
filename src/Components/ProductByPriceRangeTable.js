@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
-//Axios is an HTTP client library based on promises. It makes sending asynchronous 
-//HTTP requests to REST endpoints easier and helps you perform CRUD operations. 
-//This REST endpoint/API could be an external API like the Google API, GitHub API, 
-//and so on – or it could be your own backend Node. js server.
 import axios from 'axios'
 import { useLocation } from 'react-router-dom';
 
-//if u want to perform anything as soon as the page opens use useEffect hook
 import { useEffect } from 'react';
 const ProductByPriceRangeTable = () => {
     const {state} = useLocation();
     const {pmin}=state;
     const {pmax}=state;
+    const priceRange={
+        min:'',
+        max:'',
+    };
+  //const {min,max}=priceRange;
 const headers = {
     "Access-Control-Allow-Origin": "*"
 };
@@ -26,12 +26,16 @@ const headers = {
 // toavoid this we use asyn and await
     const loadProductsByPriceRange=(async()=>
     {
-        const min=pmin.min;
+        const min1=pmin.minimum;
         
-        const max=pmax.max;
-        console.log(min);
-        console.log(max);
-        const result=await axios.get("http://localhost:8080/products/getProductsWithinPriceRange/${min}/${max}",{headers})
+       const max1=pmax.maximum;
+      // console.log(min1);
+       //console.log(max1);
+        //setPriceRange({[min]:'60000',[max]:'120000'});
+        priceRange.min=min1;
+        priceRange.max=max1;
+        console.log(priceRange);
+        const result=await axios.post("http://localhost:8080/products/getProductsWithinPriceRange",priceRange,{headers})
         setProduct(result.data);
         console.log(result.data);
     
