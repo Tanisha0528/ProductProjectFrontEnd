@@ -56,7 +56,10 @@ const headers = {
                             <td>{p.category}</td>
                             <td>{p.qty}</td>
                             <td>{p.price}</td>
-                            <td>{p.listOfPinCodes}</td>
+                            <td>{p.listOfPinCodes.map((number) =>
+                                    //<div style={{padding:"20px"}}>{number}</div>
+                                    <div style={{float:"left",padding:"4px"}}>{number}</div>
+                                )}</td>
                             
                         </tr>
                         ))

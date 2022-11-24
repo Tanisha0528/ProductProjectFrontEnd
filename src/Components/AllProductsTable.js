@@ -53,7 +53,10 @@ const AllProductsTable = () => {
                             <td>{product.category}</td>
                             <td>{product.qty}</td>
                             <td>{product.price}</td>
-                            <td>{product.listOfPinCodes}</td>
+                            <td>{product.listOfPinCodes.map((number) =>
+                                    //<div style={{padding:"20px"}}>{number}</div>
+                                    <div style={{float:"left",padding:"4px"}}>{number}</div>
+                                )}</td>
                            
                         </tr>
                         ))
