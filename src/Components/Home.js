@@ -17,7 +17,11 @@ const Home = () => {
     const [pcategory,setCatgeory]=useState('');
     const [pmin,setMin]=useState('');
     const [pmax,setMax]=useState('');
-    const [product,setProduct]=useState([]);
+    const priceRange={
+        min:'',
+        max:'',
+    };
+    //const [product,setProduct]=useState([]);
     const headers = {
         "Access-Control-Allow-Origin": "*"
     };
@@ -41,12 +45,22 @@ const Home = () => {
       
         const name=pname;
         console.log(name);
-       // const url = 'http://localhost:8080/products/getProductByName/${name}';
+    
         const result=await axios.get("http://localhost:8080/products/getProductByName/"+name,{headers})
-        setProduct(result.data);
+        
         console.log(result.data);
-        //navigate('/getProductByName', { pname:{name}});
+        if(result.data.length===0)
+        {
+            alert("products with name: '"+name+"' not found");
+        }
+        else{
+        
+     
+
         navigate('/getProductByName',{state:{pname:{name}}});
+        }
+        document.getElementById(
+            'name').value = ''
     }
     
     const onSubmit2=async(e)=>{
@@ -57,10 +71,19 @@ const Home = () => {
         console.log(category);
        // const url = 'http://localhost:8080/products/getProductByCategory/${name}';
         const result=await axios.get("http://localhost:8080/products/getProductByCategory/"+category,{headers})
-        setProduct(result.data);
+        //setProduct(result.data);
         console.log(result.data);
         //navigate('/getProductByName', { pname:{name}});
+        if(result.data.length===0)
+        {
+            alert("products with category: '"+category+"' not found");
+        }
+        else
+        {
         navigate('/getProductByCategory',{state:{pcategory:{category}}});
+        }
+        document.getElementById(
+            'pcategory').value = ''
     }
     const onSubmit3=async(e)=>{
         //to prevent variables to show in url path
@@ -70,12 +93,25 @@ const Home = () => {
         const maximum=pmax;
         console.log(minimum);
         console.log(maximum);
-       // const url = 'http://localhost:8080/products/getProductByCategory/${name}';
-      /*  const result=await axios.get("http://localhost:8080/products/getProductsWithinPriceRange/"+min+"/"+max,{headers})
-        setProduct(result.data);
-        console.log(result.data);*/
-        //navigate('/getProductByName', { pname:{name}});
-        navigate('/getProductByPriceRange',{state:{pmin:{minimum},pmax:{maximum}}});
+      
+        priceRange.min=minimum;
+        priceRange.max=maximum;
+        console.log(priceRange);
+        const result=await axios.post("http://localhost:8080/products/getProductsWithinPriceRange",priceRange,{headers});
+       
+        console.log(result.data);
+        
+        if(result.data.length===0)
+        {
+            alert("product with price range: "+minimum+"-"+maximum+" not found")
+        }
+        else
+        {navigate('/getProductByPriceRange',{state:{pmin:{minimum},pmax:{maximum}}});
+    }
+    document.getElementById(
+        'pmin').value = '';
+        document.getElementById(
+            'pmax').value = ''
     }
     return (
         <div style={{ mt: "30px" }}>

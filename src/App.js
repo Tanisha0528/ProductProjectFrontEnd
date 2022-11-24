@@ -9,6 +9,11 @@ import AllProductsTable from './Components/AllProductsTable';
 import ProductByNameTable from './Components/ProductByNameTable';
 import ProductByCategoryTable from './Components/ProductByCatgeoryTable';
 import ProductByPriceRangeTable from './Components/ProductByPriceRangeTable';
+import AdminLogin from './Components/AdminLogin';
+import AdminPage from './Components/AdminPage';
+import AllProductsWithIdTable from './AdminOperations/AllProductsWithIdTable';
+
+
 function App() {
   return (
     <div className="App" >
@@ -21,7 +26,10 @@ function App() {
           <Route exact path="/getProductByName" element={<ProductByNameTable/>}/>
           <Route exact path="/getProductByCategory" element={<ProductByCategoryTable/>}/>
           <Route exact path="/getProductByPriceRange" element={<ProductByPriceRangeTable/>}/>
-          
+          <Route exact path="/loginAsAdmin" element={<AdminLogin/>}/>
+          <Route exact path="/adminPage" element={<AdminPage/>}/>
+          <Route exact path="/getAllProductsWithId" element={<AllProductsWithIdTable/>}/>
+         
         </Routes>
 
 

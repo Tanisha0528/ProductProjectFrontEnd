@@ -1,16 +1,16 @@
 //rafc used
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const NavBar = () => {
-    return (
-        <div>
-
-<nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+  return (
+    <div>
+     
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-          BYMART.com
+            BYMART.com
           </Link>
           <button
             className="navbar-toggler"
@@ -24,20 +24,24 @@ const NavBar = () => {
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          
-          <Link class="btn btn-outline-light" style={{marginLeft:"-950px",float:"left"}} to="/">Home</Link>
-                    <Link class="btn btn-outline-light"  to="/about">About</Link>
+          <div style={{ position: "fixed", left: "140px", float: "left" }}>
+            <Link class="btn btn-outline-light" to="/">Home</Link></div>
+          <div style={{ position: "fixed", left: "220px", float: "left" }}>
+
+            <Link class="btn btn-outline-light" to="/about">About</Link></div>
+          <div style={{ position: "fixed", right: "20px", float: "left" }}>
+            <Link class="btn btn-outline-light" style={{ float: "left" }} to="/loginAsAdmin">Login As Admin</Link></div>
         </div>
       </nav>
-           
-                
-                   
-                    
-                    
-                    
-                  
-        </div>
-    )
+
+
+
+
+
+
+
+    </div>
+  )
 }
 
 export default NavBar
