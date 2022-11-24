@@ -28,9 +28,13 @@ const headers = {
     {
         const name=pname.name;
         console.log(name);
+        
         const result=await axios.get("http://localhost:8080/products/getProductByName/"+name,{headers})
+        
         setProduct(result.data); 
+        
         console.log(result.data);
+        
     })
     
 
